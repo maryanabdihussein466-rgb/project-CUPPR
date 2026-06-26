@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CUPRR - Centralized University Project Research & Repository</title>
+  <meta name="description" content="Production-ready Single Page Application (SPA) for university IT research archiving, literature review, and capstone collaboration.">
+  <link rel="stylesheet" href="./style.css">
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       1. Glassmorphism Navigation Bar
+       ========================================================================== -->
+  <header class="navbar" id="mainNavbar">
+    <div class="container nav-container">
+      <a href="#hero" class="logo">
+        <div class="logo-icon">
+          <i data-lucide="graduation-cap"></i>
+        </div>
+        CUPRR <span>Archive</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#featured" class="nav-link">Featured</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#repository" class="nav-link">Repository</a>
+        <a href="#admin-dashboard" class="nav-link" id="navDashLink" style="display: none;">Dashboard</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- User Role Badge (Dynamically Updated) -->
+        <div class="user-badge" id="userBadge">
+          <i data-lucide="shield-check"></i>
+          <span id="userBadgeEmail">user@university.edu</span>
+          <span class="role-tag" id="userRoleTag">STUDENT</span>
+        </div>
+
+        <button class="btn btn-secondary btn-sm" id="navLoginBtn">
+          <i data-lucide="log-in" id="loginBtnIcon"></i>
+          <span id="loginBtnText">Sign In</span>
+        </button>
+
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         2. Hero Section
+         ========================================================================== -->
+    <section class="hero" id="hero">
+      <div class="hero-bg-glow"></div>
+      
+      <div class="container hero-content">
+        <div class="hero-badge">
+          <i data-lucide="sparkles"></i>
+        </div>
+
+        <h1 class="hero-title">
+          CUPRR: Centralized University Project Research & Repository
+        </h1>
+
+        <p class="hero-subtitle">
+          CUPRR connects graduates, capstone students, and faculty supervisors through a unified centralized research repository designed to archive literature, streamline literature review, and inspire breakthrough IT final-year projects.
+        </p>
+
+        <!-- Hero Interactive Search Toolbar -->
+        <div class="hero-search-box">
+          <form class="search-form" id="heroSearchForm">
+            <div class="search-input-group">
+              <i data-lucide="search"></i>
+              <input type="text" id="heroSearchInput" placeholder="Search thesis titles, AI models, cryptography, healthcare...">
+            </div>
+
+            <div class="search-select-group">
+              <select class="custom-select" id="heroFacultySelect">
+                <option value="All">🌐 All Faculties</option>
+                <option value="Computer & IT">💻 Computer & IT</option>
+                <option value="Engineering">⚙️ Engineering</option>
+                <option value="Business">📈 Business</option>
+                <option value="Health Science">🏥 Health Science</option>
+              </select>
+
+              <select class="custom-select" id="heroSearchBy">
+                <option value="all">🔍 Search All Fields</option>
+                <option value="title">📑 By Title Only</option>
+                <option value="author">🎓 By Author</option>
+                <option value="supervisor">🔬 By Supervisor</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="heroSearchBtn">
+              <span>Explore Archive</span>
+              <i data-lucide="arrow-right"></i>
+            </button>
+          </form>
+        </div>
+
+        <!-- Animated Statistics Grid -->
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number" data-target="1450" data-suffix="+">0</span>
+            <span class="stat-label">Verified Research Papers</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="4">0</span>
+            <span class="stat-label">Academic Faculties</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="3200" data-suffix="+">0</span>
+            <span class="stat-label">Active Students & Alumni</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         3. Featured Standout Projects
+         ========================================================================== -->
+    <section class="featured-section section-padding" id="featured">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <i data-lucide="award"></i>
+            <span>Award-Winning Submissions</span>
+          </div>
+          <h2 class="section-title">Featured Capstone Breakthroughs</h2>
+          <p class="section-subtitle">Discover the highest-rated capstone investigations setting benchmark standards across institutional disciplines.</p>
+        </div>
+
+        <div class="projects-grid" id="featuredGrid">
+          <!-- Populated dynamically via Vanilla JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         4. About CUPRR Section
+         ========================================================================== -->
+    <section class="section-padding" id="about">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <i data-lucide="info"></i>
+            <span>Institutional Framework</span>
+          </div>
+          <h2 class="section-title">Architected for Academic Excellence</h2>
+          <p class="section-subtitle">How CUPRR bridges the gap between theoretical computer science and practical industrial IT deployment.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="glass-card about-card">
+            <div class="about-icon"><i data-lucide="users"></i></div>
+            <h3>Connects Graduates & Students</h3>
+            <p>Direct peer-to-peer repository networking allowing current undergraduates to inspect previous graduate defense architectures and contact alumni authors.</p>
+          </div>
+
+          <div class="glass-card about-card">
+            <div class="about-icon"><i data-lucide="microscope"></i></div>
+            <h3>Helps Research & Validation</h3>
+            <p>Centralizes verified benchmark datasets, hardware telemetry benchmarks, and experimental scripts to ensure reproducible scientific outcomes.</p>
+          </div>
+
+          <div class="glass-card about-card">
+            <div class="about-icon"><i data-lucide="book-open-check"></i></div>
+            <h3>Supports Literature Review</h3>
+            <p>Accelerates state-of-the-art literature review with instant keyword filtering, abstract parsing, and automated APA/IEEE bibliographic citation formatting.</p>
+          </div>
+
+          <div class="glass-card about-card">
+            <div class="about-icon"><i data-lucide="compass"></i></div>
+            <h3>Guides Final-Year Projects</h3>
+            <p>Eliminates capstone guesswork by establishing faculty-approved structural templates and past project rating benchmarks.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         6. Centralized Repository Section
+         ========================================================================== -->
+    <section class="repository-section section-padding" id="repository">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <i data-lucide="database"></i>
+            <span>Central Repository</span>
+          </div>
+          <h2 class="section-title">University Research Repository</h2>
+          <p class="section-subtitle">Filter indexed publications by faculty department or search instantly across authors, supervisors, and abstracts.</p>
+        </div>
+
+        <div class="repo-toolbar">
+          <!-- Faculty Category Filter Tabs -->
+          <div class="filter-tabs">
+            <button class="filter-tab active" data-faculty="All">🌐 All Faculties</button>
+            <button class="filter-tab" data-faculty="Computer & IT">💻 Computer & IT</button>
+            <button class="filter-tab" data-faculty="Engineering">⚙️ Engineering</button>
+            <button class="filter-tab" data-faculty="Business">📈 Business</button>
+            <button class="filter-tab" data-faculty="Health Science">🏥 Health Science</button>
+          </div>
+
+          <!-- Live Search & Sort Controls -->
+          <div class="repo-controls">
+            <div class="repo-search">
+              <i data-lucide="search"></i>
+              <input type="text" id="repoSearchInput" placeholder="Filter current view by keyword, author, or supervisor...">
+            </div>
+
+            <div class="repo-count">
+              Showing <span id="repoCountNum">0</span> Research Publications
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <label for="repoSortSelect" style="font-size:0.85rem; color:var(--text-muted); font-weight:600;">Sort By:</label>
+              <select class="custom-select btn-sm" id="repoSortSelect" style="padding: 8px 16px;">
+                <option value="newest">📅 Newest First (2026)</option>
+                <option value="rating">⭐ Highest Rated</option>
+                <option value="oldest">⏳ Oldest First</option>
+                <option value="title">🔤 Title (A - Z)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Repository Projects Grid Container -->
+        <div class="projects-grid" id="repositoryGrid">
+          <!-- Populated dynamically via Vanilla JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         7. Admin Dashboard Section (Visible only for Admin)
+         ========================================================================== -->
+    <section class="admin-section section-padding" id="admin-dashboard">
+      <div class="container">
+        <div class="admin-header">
+          <div class="admin-title-group">
+            <div class="section-badge" style="background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.3); color: var(--accent-amber);">
+              <i data-lucide="shield-alert"></i>
+              <span>Faculty Administrator Clearance</span>
+            </div>
+            <h2><i data-lucide="layout-dashboard"></i> Repository Management Dashboard</h2>
+          </div>
+
+          <button class="btn btn-emerald" onclick="openAddProjectModal()">
+            <i data-lucide="plus-circle"></i>
+            <span>Add New Research Project</span>
+          </button>
+        </div>
+
+        <!-- Admin Quick Metrics -->
+        <div class="stats-grid" style="margin-bottom: 30px; grid-template-columns: repeat(2, 1fr); max-width: none;">
+          <div class="stat-item" style="text-align: left; display:flex; align-items:center; justify-content:space-between;">
+            <div>
+              <span class="stat-label">Indexed Repository Submissions</span>
+              <span class="stat-number" id="adminTotalPapers" style="font-size:2rem; margin-top:4px;">0</span>
+            </div>
+            <i data-lucide="folder" style="font-size:2.5rem; color:var(--accent-cyan); opacity:0.6;"></i>
+          </div>
+
+          <div class="stat-item" style="text-align: left; display:flex; align-items:center; justify-content:space-between;">
+            <div>
+              <span class="stat-label">Total Bibliographic References</span>
+              <span class="stat-number" id="adminTotalRefs" style="font-size:2rem; margin-top:4px; color:var(--accent-emerald);">0</span>
+            </div>
+            <i data-lucide="library" style="font-size:2.5rem; color:var(--accent-emerald); opacity:0.6;"></i>
+          </div>
+        </div>
+
+        <!-- Admin Project Table -->
+        <div class="table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th style="width: 38%;">Project Title & Author</th>
+                <th>Faculty Department</th>
+                <th>Assigned Supervisor</th>
+                <th>Year</th>
+                <th style="width: 12%;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminTableBody">
+              <!-- Populated dynamically via Vanilla JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       Footer
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="#hero" class="logo">
+            <div class="logo-icon"><i data-lucide="graduation-cap"></i></div>
+            CUPRR <span>System</span>
+          </a>
+          <p>Centralized University Project Research and Repository engineered for academic transparency, capstone literature review, and cross-departmental innovation.</p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#hero">Home Benchmark</a></li>
+            <li><a href="#featured">Featured Capstones</a></li>
+            <li><a href="#about">Academic Mission</a></li>
+            <li><a href="#repository">Project Repository</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Faculties Indexed</h4>
+          <ul>
+            <li><a href="#repository" onclick="document.querySelector('.filter-tab[data-faculty=\'Computer & IT\']').click()">Computer & IT</a></li>
+            <li><a href="#repository" onclick="document.querySelector('.filter-tab[data-faculty=\'Engineering\']').click()">Engineering</a></li>
+            <li><a href="#repository" onclick="document.querySelector('.filter-tab[data-faculty=\'Business\']').click()">Business</a></li>
+            <li><a href="#repository" onclick="document.querySelector('.filter-tab[data-faculty=\'Health Science\']').click()">Health Science</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 CUPRR University Repository IT Competition Team. All rights reserved. Pure HTML5, CSS3, & Vanilla JS.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       Modals Overlay System
+       ========================================================================== -->
+
+  <!-- 1. Authentication Login Modal -->
+  <div class="modal-overlay" id="loginModal">
+    <div class="modal modal-sm">
+      <div class="modal-header">
+        <h3><i data-lucide="lock" style="color:var(--accent-cyan);"></i> Portal Sign In</h3>
+        <button class="modal-close" onclick="closeModal('loginModal')"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body">
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="loginEmail">Institutional Email Address</label>
+            <input type="email" class="form-control" id="loginEmail" placeholder="user@university.edu" required>
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Account Password</label>
+            <input type="password" class="form-control" id="loginPassword" placeholder="••••••••" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-full" style="width:100%;">Authorize Access</button>
+        </form>
+
+        <div class="demo-credentials-box">
+          <h4>⚡ Competition Judge Demo Logins</h4>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Click below to auto-fill competition required test credentials:</p>
+          <div class="demo-btns">
+            <button type="button" class="btn btn-secondary btn-sm" onclick="quickDemoLogin('student')">
+              <span>🎓 Student Demo</span>
+            </button>
+            <button type="button" class="btn btn-emerald btn-sm" onclick="quickDemoLogin('admin')">
+              <span>🛡️ Admin Demo</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Rich Specification Details Modal -->
+  <div class="modal-overlay" id="detailModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="detailModalTitle">Specification Details</h3>
+        <button class="modal-close" onclick="closeModal('detailModal')"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body" id="detailModalBody">
+        <!-- Injected via Vanilla JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Admin Add/Edit Project Modal -->
+  <div class="modal-overlay" id="projectModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="projectModalTitle">➕ Add New Project</h3>
+        <button class="modal-close" onclick="closeModal('projectModal')"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body">
+        <form id="projectForm">
+          <input type="hidden" id="editProjectId">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="formTitle">Research Project Title *</label>
+              <input type="text" class="form-control" id="formTitle" placeholder="e.g. Autonomous Edge AI Swarms..." required>
+            </div>
+            <div class="form-group">
+              <label for="formFaculty">Faculty Department *</label>
+              <select class="form-control" id="formFaculty" required>
+                <option value="Computer & IT">💻 Computer & IT</option>
+                <option value="Engineering">⚙️ Engineering</option>
+                <option value="Business">📈 Business</option>
+                <option value="Health Science">🏥 Health Science</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="formAuthor">Student / Graduate Author *</label>
+              <input type="text" class="form-control" id="formAuthor" placeholder="Jane Doe" required>
+            </div>
+            <div class="form-group">
+              <label for="formSupervisor">Faculty Supervisor *</label>
+              <input type="text" class="form-control" id="formSupervisor" placeholder="Dr. Alan Turing" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="formYear">Defense Year *</label>
+              <input type="number" class="form-control" id="formYear" value="2026" min="2020" max="2030" required>
+            </div>
+            <div class="form-group">
+              <label for="formRating">Faculty Rating (1.0 - 5.0) *</label>
+              <input type="number" step="0.1" class="form-control" id="formRating" value="4.8" min="1" max="5" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="formAbstract">Paper Abstract & Summary *</label>
+            <textarea class="form-control" id="formAbstract" placeholder="Detailed abstract methodology, data sources, and experimental conclusions..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="formReferences">Indexed References (One per line)</label>
+            <textarea class="form-control" id="formReferences" placeholder="Author, A. (Year). Title of Publication. Journal Name.&#10;Author, B. (Year). Book Title..."></textarea>
+          </div>
+
+          <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:24px;">
+            <button type="button" class="btn btn-secondary" onclick="closeModal('projectModal')">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Repository Record</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Delete Confirmation Modal -->
+  <div class="modal-overlay" id="deleteConfirmModal">
+    <div class="modal modal-sm" style="text-align: center; padding: 10px;">
+      <div class="modal-header" style="border-bottom: none; justify-content: flex-end; padding-bottom: 0;">
+        <button class="modal-close" onclick="closeModal('deleteConfirmModal')"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body" style="padding-top: 0;">
+        <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(244, 63, 94, 0.15); color: var(--accent-rose); display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 20px auto;">
+          <i data-lucide="alert-triangle"></i>
+        </div>
+        <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 12px;">Confirm Permanent Deletion</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;">
+          Are you sure you want to delete <strong id="deleteTargetName" style="color:var(--text-main);">this project</strong>? This action will permanently purge it from the CUPRR LocalStorage database.
+        </p>
+        <div style="display: flex; gap: 12px; justify-content: center;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('deleteConfirmModal')">Cancel</button>
+          <button type="button" class="btn btn-danger" onclick="executeDeleteProject()">Delete Project</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Vanilla JS Engine Execution -->
+  <script src="./script.js"></script>
+</body>
+</html>

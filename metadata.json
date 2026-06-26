@@ -1,0 +1,6 @@
+{
+  "name": "CUPRR",
+  "description": "Centralized University Project Research and Repository (CUPRR) - Modern Single Page Application built with Vanilla JS, HTML5, and CSS3.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
